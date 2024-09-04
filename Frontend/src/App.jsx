@@ -4,7 +4,7 @@ import HackathonCard from "./components/HackathonCard";
 import NavBar from "./components/NavBar";
 import { HackathonProvider } from "./context/HackathonContext";
 import DetailPage from "./pages/DetailPage/DetailPage";
-import ListPage from "./pages/ListPage/LIstPage";
+import ListPage from "./pages/ListPage/ListPage";
 import {
   BrowserRouter as Router,
   Routes,
