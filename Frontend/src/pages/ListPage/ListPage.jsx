@@ -5,13 +5,13 @@ import Statistics from "./sections/Statistics";
 import Why from "./sections/Why";
 import Explore from "./sections/Explore";
 
-const ListPage = ({ detailFunction }) => {
+const ListPage = () => {
   return (
     <div className="list-page-container">
       <Home />
       <Statistics />
       <Why />
-      <Explore detailFunction={detailFunction}/>
+      <Explore />
     </div>
   );
 };

@@ -64,6 +64,17 @@
   height: 252px;
   padding: 18px 18px;
 }
+.input-file{
+  width: 236px;
+  height: 39px;
+  border: 1px solid #d9d9d9;
+  border-radius: 5px;
+  background-color: #f4f4f4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
 .input-select {
   width: 236px;
   color: #000000;

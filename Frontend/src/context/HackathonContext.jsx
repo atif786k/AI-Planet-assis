@@ -19,8 +19,10 @@ export const HackathonProvider = ({ children }) => {
     );
   };
 
+
   const deleteHackathon = (id) => {
     setHackathons(hackathons.filter((hackathon) => hackathon.id !== id));
+    alert("Hackathon is deleted. Please go back");
   };
 
   return (

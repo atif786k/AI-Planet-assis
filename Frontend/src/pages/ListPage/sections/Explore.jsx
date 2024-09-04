@@ -1,15 +1,13 @@
 import React, { useState } from "react";
-import { IoIosArrowDown } from "react-icons/io";
-import { CiSearch } from "react-icons/ci";
-import { Link, useNavigate } from "react-router-dom";
 import { useHackathons } from "../../../context/HackathonContext";
 import HackathonItem from "../../../components/HackathonItems";
+import { CiSearch } from "react-icons/ci";
+import { Link } from "react-router-dom";
 
-const Explore = ({ detailFunction }) => {
-  const { hackathons, deleteHackathon } = useHackathons();
-  const [sortOrder, setSortOrder] = useState("newest");
+const Explore = () => {
+  const { hackathons } = useHackathons();
+  const [sortOrder, setSortOrder] = useState("");
   const [filterLevel, setFilterLevel] = useState("");
-  const navigate = useNavigate();
 
   const sortedHackathons = [...hackathons].sort((a, b) => {
     return sortOrder === "newest"
@@ -20,10 +18,6 @@ const Explore = ({ detailFunction }) => {
   const filteredHackathons = sortedHackathons.filter((hackathon) => {
     return filterLevel ? hackathon.level === filterLevel : true;
   });
-
-  const handleRoute = () => {
-    navigate(`/detail`);
-  }
   return (
     <section className="explore-container">
       <div className="functionality-div">
@@ -31,26 +25,24 @@ const Explore = ({ detailFunction }) => {
         <div className="input-div space-x-6">
           <CiSearch className="text-xl absolute left-12" />
           <input type="text" className="input-field" placeholder="Search" />
-          <button className="filter-btn">
-            Filter <IoIosArrowDown className="ml-2" />
-          </button>
         </div>
       </div>
 
-      <div className="hackathon-card-mapping">
-        {/* <div>
-          <label>Sort By:</label>
+      <div className="hackathon-card-mapping space-y-16">
+        <div className="space-x-6">
           <select
             value={sortOrder}
+            className="filter-style"
             onChange={(e) => setSortOrder(e.target.value)}
           >
-            <option value="newest">Newest First</option>
-            <option value="oldest">Oldest First</option>
+            <option defaultValue="Status">Status</option>
+            <option value="newest">Newest</option>
+            <option value="oldest">Oldest</option>
           </select>
 
-          <label>Filter by Level:</label>
           <select
             value={filterLevel}
+            className="filter-style"
             onChange={(e) => setFilterLevel(e.target.value)}
           >
             <option value="">All</option>
@@ -58,19 +50,22 @@ const Explore = ({ detailFunction }) => {
             <option value="medium">Medium</option>
             <option value="hard">Hard</option>
           </select>
-        </div> */}
+        </div>
 
-        <div>
+        <div className="grid grid-cols-3 gap-20 justify-items-center content-center">
           {filteredHackathons.map((hackathon) => (
-            <div key={hackathon.id} onClick={()=>{detailFunction(hackathon); handleRoute()}}>
+            <Link
+              to="/detail"
+              key={hackathon.id}
+              state={{ hackathonDetail: hackathon }}
+            >
               <HackathonItem
                 title={hackathon.name}
                 imageUrl={hackathon.image}
                 startTime={hackathon.startDate}
                 endTime={hackathon.endDate}
               />
-              {/* <Link to={`/edit/${hackathon.id}`}>Edit</Link> */}
-            </div>
+            </Link>
           ))}
         </div>
       </div>

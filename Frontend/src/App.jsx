@@ -9,38 +9,29 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  useNavigate,
+  // useNavigate,
 } from "react-router-dom";
 
 function App() {
-  const [details, setDetails] = useState(null);
-  // const navigate = useNavigate();
-  const handleHackathonDetails = (hackathon) => {
-    setDetails(hackathon);
-    // navigate("/detail");
-  };
+  // const [details, setDetails] = useState(null);
+  // // const navigate = useNavigate();
+  // const handleHackathonDetails = (hackathon) => {
+  //   setDetails(hackathon);
+  //   // navigate("/detail");
+  // };
   return (
     <>
       <HackathonProvider>
-        <div className="app-container poppins-regular">     
+        <div className="app-container poppins-regular">
           <Router>
             <NavBar />
             <Routes>
-              <Route
-                exact
-                path="/"
-                element={<ListPage detailFunction={handleHackathonDetails} />}
-              ></Route>
+              <Route exact path="/" element={<ListPage />}></Route>
               <Route exact path="/create" element={<HackathonCard />}></Route>
               <Route exact path="/edit/:id" element={<HackathonCard />}></Route>
-              <Route
-                exact
-                path="/detail"
-                element={<DetailPage hackathonDetail={details} />}
-              ></Route>
+              <Route exact path="/detail" element={<DetailPage />}></Route>
             </Routes>
           </Router>
-          {/* <CreateCard /> */}
         </div>
       </HackathonProvider>
     </>

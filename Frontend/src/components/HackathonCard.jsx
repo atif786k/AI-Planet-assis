@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useHackathons } from "../context/HackathonContext";
 import { useNavigate, useParams } from "react-router-dom";
+import { IoMdCloudUpload } from "react-icons/io";
 
 const HackathonCard = () => {
   const [imageSrc, setImageSrc] = useState("");
@@ -44,7 +45,7 @@ const HackathonCard = () => {
 
   const onSubmit = (data) => {
     if (isEditMode) {
-      updateHackathon({ ...data, id: Number(id) });
+      updateHackathon({ ...data, id: Number(id), image: imageSrc });
     } else {
       addHackathon({ ...data, image: imageSrc });
       console.log(data);
@@ -116,17 +117,21 @@ const HackathonCard = () => {
         {/* Image Upload */}
         <div className="input-divs space-y-4">
           <label className="input-labels">Image</label>
-          <div>
-            <input
-              type="file"
-              accept="image/*"
-              onChange={handlePhotoChange}
-              className="input-file"
-            />
-          </div>
-          {errors.image && (
-            <p className="text-red-600 text-sm">{errors.image.message}</p>
-          )}
+          <label className="input-file">
+            <div>
+              <input
+                type="file"
+                accept="image/*"
+                onChange={handlePhotoChange}
+                className="hidden"
+              />
+            </div>
+            {errors.image && (
+              <p className="text-red-600 text-sm">{errors.image.message}</p>
+            )}
+            Upload
+            <IoMdCloudUpload className="ml-2 text-xl" />
+          </label>
         </div>
 
         {/* Level Type */}
