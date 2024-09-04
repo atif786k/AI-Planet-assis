@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "./App.css";
 import HackathonCard from "./components/HackathonCard";
 import NavBar from "./components/NavBar";
@@ -9,16 +8,9 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  // useNavigate,
 } from "react-router-dom";
 
 function App() {
-  // const [details, setDetails] = useState(null);
-  // // const navigate = useNavigate();
-  // const handleHackathonDetails = (hackathon) => {
-  //   setDetails(hackathon);
-  //   // navigate("/detail");
-  // };
   return (
     <>
       <HackathonProvider>
