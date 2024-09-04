@@ -18,8 +18,11 @@ const DetailPage = () => {
       <div className="upper-div">
         <div className="upper-inner-div">
           <h5 className="detail-h5">
-            <SlClock className="mx-6" />
-            Starts on {new Date(hackathonDetail.startDate).toLocaleString()}
+            <SlClock className="mx-4" />
+            Starts on {new Date(
+              hackathonDetail.startDate
+            ).toLocaleString()}{" "}
+            (Indian Standard Time)
           </h5>
           <h1 className="detail-h1">{hackathonDetail.name}</h1>
           <h4 className="detail-h4">{hackathonDetail.description}</h4>
